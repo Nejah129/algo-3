@@ -1,0 +1,66 @@
+PROCEDURE dot_product(v1,v2 : ARRAY_OF INTEGER,VAR P:INTEGER)
+VAR
+    i,n,m:INTEGER;
+BEGIN
+    P:=0;
+    n:= v1.length-1;
+    m:= v2.length-1;
+    IF (n <> m) THEN
+        Write("Erreur")
+        RETURN P := NAN;
+    END_IF
+    FOR i FROM 0 TO n STEP 1  DO
+        P:=P+v1[i]*v2[i]
+    END_FOR
+END
+
+
+ALGORITHM orth_vector
+VAR
+    vectors : ARRAY_OF ARRAY;
+    P,i,j,n:INTEGER;
+BEGIN
+    n:=vectors.length-1;
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        FOR j FROM i+1 TO n STEP 1  DO
+            dot_product(vectors[i],vectors[j],P)
+            IF (P = 0) THEN
+                Write(vectors[i],"&",vectors[j]," 0rthogonal")
+            END_IF
+        END_FOR
+    END_FOR
+END
+
+FUNCTION dot_product(v1,v2 : ARRAY_OF INTEGER) : INTEGER
+VAR
+    i,n,P,m:INTEGER;
+BEGIN
+    n:=v1.length-1;
+    m:=v2.length-1;
+    P:=0;
+    IF (n <> m) THEN
+        (n <> m) THEN
+        Write("Sorry there is a erreur in your intires")
+        RETURN P := NAN;
+    END_IF
+    FOR i FROM 0 TO n STEP 1  DO
+        P:=P+v1[i]*v2[i]
+    END_FOR
+    RETURN P ;
+END
+
+ALGORITHM orth_vector
+VAR
+    vectors : ARRAY_OF ARRAY;
+    P,i,j,n:INTEGER;
+BEGIN
+    n:=vectors.length-1;
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        FOR j FROM i+1 TO n STEP 1  DO
+            P := dot_product(vectors[i],vectors[j])
+            IF (P = 0) THEN
+                Write(vectors[i],"&",vectors[j],"0rthogonal")
+            END_IF
+        END_FOR
+    END_FOR
+END
